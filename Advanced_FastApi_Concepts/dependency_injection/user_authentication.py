@@ -28,4 +28,4 @@ def get_current_user(token:str = Depends(oauth2_scheme)):
 
 @app.get('/profile')
 def get_profile(user=Depends(get_current_user)):
-    return {'username':user['name']}
+    return {'username':user['name']}    
