@@ -10,7 +10,7 @@ ACCESS_TOKEN_EXPIRY_TIME = 30
 #FUNCTION
 def create_access_token(data:dict):
     header = {'alg':ALGORITHM}
-    expire = datetime.now(timezone.utc)-timedelta(ACCESS_TOKEN_EXPIRY_TIME)
+    expire = datetime.now(timezone.utc)+timedelta(ACCESS_TOKEN_EXPIRY_TIME)
     payload=data.copy()
     payload.update({'exp':expire})
     return jwt.encode(header,payload,SECRET_KEY).decode('utf-8')
@@ -26,4 +26,4 @@ def verify_token(token:str):
             raise HTTPException(status_code=401,detail = 'token missing')
         return username
     except JoseError:
-        raise HTTPException(status_code=401,details="Couldn't validate credentials")
+        raise HTTPException(status_code=401,detail="Couldn't validate credentials")
