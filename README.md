@@ -1,219 +1,166 @@
-# FastAPI Learning 🚀
+# 🚀 FastAPI Learning
 
-This repository contains my learning journey with **FastAPI**, from the basics of creating APIs to more advanced concepts such as authentication, middleware, dependencies, and API security.
+This repository contains my **FastAPI learning journey**, where I am learning how to build APIs and backend applications using Python and FastAPI.
 
-The purpose of this repository is to learn how to build modern, scalable APIs using Python and FastAPI.
+The repository starts with the fundamentals of FastAPI and gradually moves toward more advanced concepts such as API development, authentication, dependencies, middleware, and testing.
+
+The main goal is not just to memorize FastAPI syntax, but to understand **how APIs work and how the different components of a backend application fit together**.
 
 ---
 
-## 📚 What I Am Learning
+## 📚 What I'm Learning
 
-### 1. FastAPI Basics
+### 🔹 FastAPI Basics
+
+Learning the fundamentals of creating APIs with FastAPI, including:
 
 * Creating a FastAPI application
-* Creating API endpoints
-* GET, POST, PUT, and DELETE requests
+* API routes
+* HTTP methods
 * Path parameters
 * Query parameters
 * Request bodies
-* JSON responses
+* Response handling
+* Pydantic models
+* API validation
 * HTTP status codes
-* Running FastAPI applications
 * Interactive API documentation
 
 ---
 
-### 2. Pydantic
+## 🔹 Building APIs
 
-Learning how Pydantic is used for:
+The `BuildingApi` folder contains my experiments and examples related to building APIs with FastAPI.
 
-* Request validation
-* Response validation
-* Data models
-* Type checking
-* Structured API data
-
-Example:
-
-```python
-from pydantic import BaseModel
-
-class User(BaseModel):
-    name: str
-    age: int
-```
-
----
-
-### 3. Dependency Injection
-
-Learning how FastAPI's `Depends()` system works.
-
-Topics include:
-
-* Dependency functions
-* Reusable dependencies
-* `Depends()`
-* Authentication dependencies
-* Sharing common logic between endpoints
-
-Example:
-
-```python
-from fastapi import Depends
-
-@app.get("/users")
-def get_users(user=Depends(get_current_user)):
-    return user
-```
-
----
-
-### 4. Authentication & Authorization
-
-Learning how to secure APIs using:
-
-* OAuth2
-* JWT
-* Password hashing
-* Access tokens
-* Token validation
-* Authentication dependencies
-* Role-based access control (RBAC)
-
-The authentication experiments are located in:
-
-```text
-Advanced_FastApi_Concepts/
-└── jwt_authentication/
-```
-
----
-
-### 5. Middleware
-
-Learning how middleware works in FastAPI.
-
-Topics include:
-
-* Request/response lifecycle
-* Custom middleware
-* Logging
-* Processing requests before reaching endpoints
-* Processing responses before returning them
-* CORS
+The focus is on understanding how a client communicates with a backend through HTTP.
 
 Basic flow:
 
 ```text
 Client
    ↓
-Middleware
+HTTP Request
    ↓
-FastAPI Endpoint
+FastAPI
    ↓
-Response
+API Endpoint
    ↓
-Middleware
+Business Logic
+   ↓
+HTTP Response
    ↓
 Client
 ```
 
 ---
 
-### 6. CORS
+## 🔹 Advanced FastAPI Concepts
 
-Learning how **Cross-Origin Resource Sharing (CORS)** works and how to configure it in FastAPI.
+The `Advanced_FastApi_Concepts` folder contains more advanced concepts that I learned after understanding the basics.
 
-CORS becomes important when a frontend and backend are running on different origins.
+Topics include:
 
-Example:
+* Dependency Injection
+* `Depends()`
+* Middleware
+* CORS
+* Authentication
+* Authorization
+* OAuth2
+* JWT authentication
+* Password hashing
+* Access tokens
+* Role-based access control
 
-```python
-from fastapi.middleware.cors import CORSMiddleware
+### Authentication Flow
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+```text
+Client
+   ↓
+Login
+   ↓
+FastAPI
+   ↓
+Verify Credentials
+   ↓
+Generate JWT
+   ↓
+Client
+   ↓
+Send JWT with Request
+   ↓
+Authentication Dependency
+   ↓
+Protected Endpoint
 ```
 
 ---
 
-### 7. API Documentation
+## 🔹 Unit Testing
 
-FastAPI automatically provides interactive API documentation.
+The `Unit-testing` folder contains my learning and experiments related to **testing FastAPI applications**.
 
-After starting the server:
+The goal is to understand how API endpoints can be tested automatically instead of manually testing every endpoint.
 
-```text
-http://127.0.0.1:8000/docs
-```
-
-FastAPI provides Swagger UI for testing API endpoints.
-
-It also provides ReDoc:
+Basic idea:
 
 ```text
-http://127.0.0.1:8000/redoc
+Test
+ ↓
+Send Request
+ ↓
+FastAPI Endpoint
+ ↓
+Response
+ ↓
+Check Expected Result
 ```
 
 ---
 
-## 🗂️ Repository Structure
-
-The repository is organized according to the concepts I am learning.
+## 📁 Repository Structure
 
 ```text
 FastAPI-learning/
 │
-├── FastApi/
-│   ├── basic concepts
-│   ├── API endpoints
-│   ├── request handling
-│   └── validation
-│
 ├── Advanced_FastApi_Concepts/
-│   ├── jwt_authentication/
-│   ├── middleware/
-│   ├── dependencies/
-│   ├── cors/
-│   └── other advanced concepts
+│   └── Advanced FastAPI concepts
 │
-├── .gitignore
-├── requirements.txt
+├── BuildingApi/
+│   └── API development examples
+│
+├── Unit-testing/
+│   └── FastAPI testing
+│
 └── README.md
 ```
 
-The exact structure may change as I continue learning FastAPI.
+The repository structure will continue to evolve as I learn more FastAPI concepts.
 
 ---
 
-## 🛠️ Technologies Used
+## 🛠️ Technologies
 
-* **Python**
-* **FastAPI**
-* **Pydantic**
-* **Uvicorn**
-* **OAuth2**
-* **JWT**
-* **HTTP**
-* **REST APIs**
+* Python
+* FastAPI
+* Pydantic
+* Uvicorn
+* OAuth2
+* JWT
+* HTTP / REST APIs
+* Pytest
 
 ---
 
-## ⚙️ Installation
+## ⚙️ Setup
 
 Clone the repository:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/Dhruv55987/FastAPI-learning.git
 ```
 
-Move into the project directory:
+Move into the repository:
 
 ```bash
 cd FastAPI-learning
@@ -225,13 +172,13 @@ Create a virtual environment:
 python -m venv .venv
 ```
 
-Activate the virtual environment on Windows:
+Activate it on Windows:
 
 ```powershell
 .venv\Scripts\activate
 ```
 
-Install the dependencies:
+Install the required packages:
 
 ```bash
 pip install -r requirements.txt
@@ -239,122 +186,135 @@ pip install -r requirements.txt
 
 ---
 
-## ▶️ Running FastAPI
+## ▶️ Running a FastAPI Application
 
-A basic FastAPI application can be started using:
+A FastAPI application can be started using Uvicorn:
 
 ```bash
 uvicorn main:app --reload
 ```
 
-Here:
+Where:
 
 ```text
-main → Python file (main.py)
-app  → FastAPI object
+main → Python file containing the application
+app  → FastAPI application object
 ```
 
-The `--reload` option automatically restarts the server when code changes.
-
-The application will normally be available at:
+The API can then be accessed at:
 
 ```text
 http://127.0.0.1:8000
 ```
 
----
+### Interactive API Documentation
 
-## 📖 Learning Approach
-
-This repository is not intended to be a production-ready application.
-
-The main goal is to understand **how FastAPI works internally and how its different components fit together**.
-
-My learning approach is:
+FastAPI automatically provides Swagger UI:
 
 ```text
-Learn Concept
-     ↓
-Understand Why It Is Used
-     ↓
-Build a Small Example
-     ↓
-Test the API
-     ↓
-Experiment / Break the Code
-     ↓
-Fix the Problem
-     ↓
-Build a Small Project
+http://127.0.0.1:8000/docs
+```
+
+And ReDoc:
+
+```text
+http://127.0.0.1:8000/redoc
 ```
 
 ---
 
-## 🎯 Current Learning Goals
+## 🧠 My Learning Approach
 
-* [x] FastAPI basics
+I am using this repository to learn concepts by **writing code, experimenting, debugging, and testing** rather than only following tutorials.
+
+My learning process:
+
+```text
+Learn a Concept
+       ↓
+Understand Why It Is Needed
+       ↓
+Implement It
+       ↓
+Run & Test It
+       ↓
+Break Things
+       ↓
+Debug the Errors
+       ↓
+Understand the Solution
+       ↓
+Build Something With It
+```
+
+The purpose is to become comfortable enough with FastAPI that I can start a project from a problem statement and use documentation to figure out the implementation.
+
+---
+
+## 🎯 Learning Progress
+
+* [x] FastAPI fundamentals
 * [x] API routes
-* [x] Request and response handling
+* [x] HTTP methods
+* [x] Path parameters
+* [x] Query parameters
+* [x] Request bodies
 * [x] Pydantic
-* [x] Dependencies
+* [x] API validation
+* [x] Dependency Injection
+* [x] `Depends()`
 * [x] Middleware
 * [x] CORS
-* [x] JWT authentication
-* [x] OAuth2 basics
+* [x] OAuth2
+* [x] JWT Authentication
+* [x] Authorization
+* [x] Unit Testing
 * [ ] Database integration
 * [ ] SQLAlchemy
-* [ ] Async programming
-* [ ] Testing FastAPI applications
-* [ ] Dockerizing FastAPI
-* [ ] Deploying FastAPI applications
-* [ ] Building a complete production-style API
+* [ ] Async database operations
+* [ ] Docker
+* [ ] Deployment
+* [ ] Production-ready FastAPI project
 
 ---
 
 ## 💡 Why FastAPI?
 
-FastAPI is useful for building APIs and backend services in Python.
+FastAPI is a modern Python web framework for building APIs. It provides features such as type-based validation, automatic API documentation, dependency injection, and support for asynchronous programming.
 
-It provides:
-
-* High performance
-* Automatic API documentation
-* Request validation
-* Type hints
-* Dependency injection
-* Async support
-* Easy integration with machine learning models
-
-It is particularly useful for **ML model deployment**, where a trained model can be exposed through an API.
+I am also learning FastAPI because it is useful for **Machine Learning and AI model deployment**.
 
 For example:
 
 ```text
-ML Model
-   ↓
-FastAPI
-   ↓
-/predict endpoint
-   ↓
-Client
+Trained ML Model
+      ↓
+   FastAPI
+      ↓
+ /predict endpoint
+      ↓
+Client Application
 ```
 
----
-
-## 🚀 Future Projects
-
-After learning the individual FastAPI concepts, I plan to combine them into complete projects such as:
-
-* ML model prediction API
-* Authentication system
-* CRUD API
-* ML inference API with authentication
-* FastAPI + database application
-* FastAPI + Docker deployment
+This allows a trained machine learning model to be exposed as an API that can be consumed by other applications.
 
 ---
 
-## 👨‍💻 Author
+## 🚀 Future Goals
+
+After completing the fundamentals and advanced concepts, I plan to use FastAPI to build complete projects involving:
+
+* ML model deployment
+* CRUD APIs
+* Authentication systems
+* Database integration
+* AI/ML inference APIs
+* FastAPI + Docker
+* Production-style backend applications
+
+---
+
+## 👨‍💻 About
 
 **Dhruv Patel**
 
@@ -374,9 +334,14 @@ Interested in:
 
 ## ⭐ Purpose of This Repository
 
-This repository serves as a personal reference and record of my **FastAPI learning journey**, experiments, and projects.
+This repository is a record of my **FastAPI learning journey**.
 
-The goal is not just to memorize FastAPI syntax, but to understand **how APIs, authentication, middleware, dependencies, and backend systems work together**.
+Rather than treating it as a finished project, I use it as a place to:
 
-│
-└── README.md
+* Practice concepts
+* Experiment with code
+* Understand errors
+* Test different approaches
+* Build small examples
+* Gradually move toward complete backend applications
+
